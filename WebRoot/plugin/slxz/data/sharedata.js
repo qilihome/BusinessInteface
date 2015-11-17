@@ -1,0 +1,2 @@
+
+updateShareData({img_url:'http://imgcache.life.qq.com/www/misc/images/weixin_shop_logo/2820230786_share_150_150.png?update=1364204212',link:'http://life.qq.com/qr/n13642042128888',desc:'楼盘详情最新动态尽在掌握！',title:'碧桂园十里银滩',content:'#微信扫描二维码# 我刚在碧桂园十里银滩扫描二维码，轻松获得微生活会员卡，楼盘详情最新动态尽在掌握！快去微信里搜索关注“碧桂园十里银滩”吧！'});

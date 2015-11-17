@@ -1,0 +1,36 @@
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.action.extension" value="action"></constant>
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true" />
+	<constant name="struts.multipart.saveDir" value="/tmp" />
+	<!-- 100M -->
+	<constant name="struts.multipart.maxSize" value="104857600" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.locale" value="zh" />
+	<constant name="struts.custom.i18n.resources" value="i18n.messageResource" />
+
+	<package name="default" extends="struts-default">
+		<global-results>
+			<result name="error" type="redirect">error.jsp</result>
+		</global-results>
+	</package>
+	
+	<!-- 引入文件 -->
+	<include file="struts/template-struts.xml"></include>
+	<include file="struts/templatearea-struts.xml"></include>
+	<include file="struts/config-struts.xml"></include>
+	<include file="struts/fileupload-struts.xml"></include>
+	<include file="struts/album-struts.xml"></include>
+	<include file="struts/albumphoto-struts.xml"></include>
+	<include file="struts/expertreview-struts.xml"></include>
+	<include file="struts/vote-struts.xml"></include>
+	<include file="struts/voteoption-struts.xml"></include>
+	<!-- 
+	<include file="struts/channel-struts.xml"></include>
+	<include file="struts/module-struts.xml"></include>
+	<include file="struts/column-struts.xml"></include>
+	 -->
+</struts>

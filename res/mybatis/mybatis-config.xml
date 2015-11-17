@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias alias="Template" type="com.weichat.boss.data.pojo.Template" />
+		<typeAlias alias="TemplateArea" type="com.weichat.boss.data.pojo.TemplateArea" />
+		<typeAlias alias="CustomerTemplateContent" type="com.weichat.boss.data.pojo.CustomerTemplateContent" />
+		<typeAlias alias="CustomerAlbum" type="com.weichat.boss.data.pojo.CustomerAlbum" />
+		<typeAlias alias="CustomerAlbumPhoto" type="com.weichat.boss.data.pojo.CustomerAlbumPhoto" />
+	</typeAliases>
+	<mappers>
+		<mapper resource="mybatis/TemplateMapper.xml" />
+		<mapper resource="mybatis/TemplateAreaMapper.xml" />
+		<mapper resource="mybatis/CustomerTemplateContentMapper.xml" />
+		<mapper resource="mybatis/CustomerAlbumMapper.xml" />
+		<mapper resource="mybatis/CustomerAlbumPhotoMapper.xml" />
+		
+		<mapper resource="mybatis/ExpertReviewMapper.xml" />
+		<mapper resource="mybatis/VoteMapper.xml" />
+		<mapper resource="mybatis/VoteOptionMapper.xml" />
+		<mapper resource="mybatis/VoteRecordMapper.xml" />
+	</mappers>
+</configuration>

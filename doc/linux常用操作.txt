@@ -1,0 +1,12 @@
+#看是否已经有tomcat在运行了
+ps -ef |grep tomcat
+#如果有，用kill;
+kill -9 pid #pid 为相应的进程号
+
+#执行
+bin/startup.sh #启动tomcat
+bin/shutdown.sh #停止tomcat
+tail -f logs/catalina.out #看tomcat的控制台输出；
+
+
+删除文件夹：rm -rf 

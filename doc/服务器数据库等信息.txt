@@ -1,0 +1,36 @@
+测试环境：
+	服务器：
+		liunx
+		198.58.103.81
+		root/liqi1234567890
+		/home/ruisi/bak/apache-tomcat-6.0.33/webapps
+	数据库：
+		mysql
+		198.58.103.81 
+		root/admin1 
+		
+		
+现网环境：
+	服务器：
+		liunx
+		183.60.243.182  
+		1251001054/Abc1234%
+		/data/home/1251001054/package/single/webapps
+	数据库：
+		mysql
+		183.60.243.182
+		root/admin1 
+		
+	
+SVN环境：
+	svn://198.58.103.81/svn/trunk/code/app
+	zip/zip19
+	
+	
+测试访问：
+	模板列表：http://198.58.103.81:8889/weichat/templateAction_list.action
+	
+现网访问：
+	模板列表：http://183.60.243.182:8889/weichat/templateAction_list.action
+	
+瑞思网址：http://198.58.103.81:8889/ruisi/home

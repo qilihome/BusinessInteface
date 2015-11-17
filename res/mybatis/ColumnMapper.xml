@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.weichat.boss.data.dao.ColumnMapper">
+  <resultMap id="BaseResultMap" type="com.weichat.boss.data.pojo.Column">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="channelId" jdbcType="INTEGER" property="channelid" />
+    <result column="moduleId" jdbcType="INTEGER" property="moduleid" />
+    <result column="customerId" jdbcType="INTEGER" property="customerid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="showName" jdbcType="INTEGER" property="showname" />
+    <result column="summary" jdbcType="VARCHAR" property="summary" />
+    <result column="showSummary" jdbcType="INTEGER" property="showsummary" />
+    <result column="detail" jdbcType="VARCHAR" property="detail" />
+    <result column="showDetail" jdbcType="INTEGER" property="showdetail" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="sequence" jdbcType="INTEGER" property="sequence" />
+    <result column="logo" jdbcType="VARCHAR" property="logo" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="backup1" jdbcType="VARCHAR" property="backup1" />
+    <result column="backup2" jdbcType="VARCHAR" property="backup2" />
+    <result column="backup3" jdbcType="VARCHAR" property="backup3" />
+    <result column="backup4" jdbcType="VARCHAR" property="backup4" />
+    <result column="createtime" jdbcType="VARCHAR" property="createtime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, channelId, moduleId, customerId, name, showName, summary, showSummary, detail, 
+    showDetail, type, sequence, logo, content, backup1, backup2, backup3, backup4, createtime, 
+    status
+  </sql>
+  <select id="selectByExample" parameterType="com.weichat.boss.data.pojo.ColumnExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_column
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_column
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_column
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weichat.boss.data.pojo.ColumnExample">
+    delete from t_column
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weichat.boss.data.pojo.Column">
+    insert into t_column (id, channelId, moduleId, 
+      customerId, name, showName, 
+      summary, showSummary, detail, 
+      showDetail, type, sequence, 
+      logo, content, backup1, 
+      backup2, backup3, backup4, 
+      createtime, status)
+    values (#{id,jdbcType=INTEGER}, #{channelid,jdbcType=INTEGER}, #{moduleid,jdbcType=INTEGER}, 
+      #{customerid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{showname,jdbcType=INTEGER}, 
+      #{summary,jdbcType=VARCHAR}, #{showsummary,jdbcType=INTEGER}, #{detail,jdbcType=VARCHAR}, 
+      #{showdetail,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{sequence,jdbcType=INTEGER}, 
+      #{logo,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{backup1,jdbcType=VARCHAR}, 
+      #{backup2,jdbcType=VARCHAR}, #{backup3,jdbcType=VARCHAR}, #{backup4,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weichat.boss.data.pojo.Column">
+    insert into t_column
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="channelid != null">
+        channelId,
+      </if>
+      <if test="moduleid != null">
+        moduleId,
+      </if>
+      <if test="customerid != null">
+        customerId,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="showname != null">
+        showName,
+      </if>
+      <if test="summary != null">
+        summary,
+      </if>
+      <if test="showsummary != null">
+        showSummary,
+      </if>
+      <if test="detail != null">
+        detail,
+      </if>
+      <if test="showdetail != null">
+        showDetail,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="sequence != null">
+        sequence,
+      </if>
+      <if test="logo != null">
+        logo,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="backup1 != null">
+        backup1,
+      </if>
+      <if test="backup2 != null">
+        backup2,
+      </if>
+      <if test="backup3 != null">
+        backup3,
+      </if>
+      <if test="backup4 != null">
+        backup4,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="channelid != null">
+        #{channelid,jdbcType=INTEGER},
+      </if>
+      <if test="moduleid != null">
+        #{moduleid,jdbcType=INTEGER},
+      </if>
+      <if test="customerid != null">
+        #{customerid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="showname != null">
+        #{showname,jdbcType=INTEGER},
+      </if>
+      <if test="summary != null">
+        #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="showsummary != null">
+        #{showsummary,jdbcType=INTEGER},
+      </if>
+      <if test="detail != null">
+        #{detail,jdbcType=VARCHAR},
+      </if>
+      <if test="showdetail != null">
+        #{showdetail,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="sequence != null">
+        #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="logo != null">
+        #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="backup1 != null">
+        #{backup1,jdbcType=VARCHAR},
+      </if>
+      <if test="backup2 != null">
+        #{backup2,jdbcType=VARCHAR},
+      </if>
+      <if test="backup3 != null">
+        #{backup3,jdbcType=VARCHAR},
+      </if>
+      <if test="backup4 != null">
+        #{backup4,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weichat.boss.data.pojo.ColumnExample" resultType="java.lang.Integer">
+    select count(*) from t_column
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_column
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.channelid != null">
+        channelId = #{record.channelid,jdbcType=INTEGER},
+      </if>
+      <if test="record.moduleid != null">
+        moduleId = #{record.moduleid,jdbcType=INTEGER},
+      </if>
+      <if test="record.customerid != null">
+        customerId = #{record.customerid,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.showname != null">
+        showName = #{record.showname,jdbcType=INTEGER},
+      </if>
+      <if test="record.summary != null">
+        summary = #{record.summary,jdbcType=VARCHAR},
+      </if>
+      <if test="record.showsummary != null">
+        showSummary = #{record.showsummary,jdbcType=INTEGER},
+      </if>
+      <if test="record.detail != null">
+        detail = #{record.detail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.showdetail != null">
+        showDetail = #{record.showdetail,jdbcType=INTEGER},
+      </if>
+      <if test="record.type != null">
+        type = #{record.type,jdbcType=INTEGER},
+      </if>
+      <if test="record.sequence != null">
+        sequence = #{record.sequence,jdbcType=INTEGER},
+      </if>
+      <if test="record.logo != null">
+        logo = #{record.logo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.content != null">
+        content = #{record.content,jdbcType=VARCHAR},
+      </if>
+      <if test="record.backup1 != null">
+        backup1 = #{record.backup1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.backup2 != null">
+        backup2 = #{record.backup2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.backup3 != null">
+        backup3 = #{record.backup3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.backup4 != null">
+        backup4 = #{record.backup4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createtime != null">
+        createtime = #{record.createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_column
+    set id = #{record.id,jdbcType=INTEGER},
+      channelId = #{record.channelid,jdbcType=INTEGER},
+      moduleId = #{record.moduleid,jdbcType=INTEGER},
+      customerId = #{record.customerid,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      showName = #{record.showname,jdbcType=INTEGER},
+      summary = #{record.summary,jdbcType=VARCHAR},
+      showSummary = #{record.showsummary,jdbcType=INTEGER},
+      detail = #{record.detail,jdbcType=VARCHAR},
+      showDetail = #{record.showdetail,jdbcType=INTEGER},
+      type = #{record.type,jdbcType=INTEGER},
+      sequence = #{record.sequence,jdbcType=INTEGER},
+      logo = #{record.logo,jdbcType=VARCHAR},
+      content = #{record.content,jdbcType=VARCHAR},
+      backup1 = #{record.backup1,jdbcType=VARCHAR},
+      backup2 = #{record.backup2,jdbcType=VARCHAR},
+      backup3 = #{record.backup3,jdbcType=VARCHAR},
+      backup4 = #{record.backup4,jdbcType=VARCHAR},
+      createtime = #{record.createtime,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weichat.boss.data.pojo.Column">
+    update t_column
+    <set>
+      <if test="channelid != null">
+        channelId = #{channelid,jdbcType=INTEGER},
+      </if>
+      <if test="moduleid != null">
+        moduleId = #{moduleid,jdbcType=INTEGER},
+      </if>
+      <if test="customerid != null">
+        customerId = #{customerid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="showname != null">
+        showName = #{showname,jdbcType=INTEGER},
+      </if>
+      <if test="summary != null">
+        summary = #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="showsummary != null">
+        showSummary = #{showsummary,jdbcType=INTEGER},
+      </if>
+      <if test="detail != null">
+        detail = #{detail,jdbcType=VARCHAR},
+      </if>
+      <if test="showdetail != null">
+        showDetail = #{showdetail,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="sequence != null">
+        sequence = #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="logo != null">
+        logo = #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="backup1 != null">
+        backup1 = #{backup1,jdbcType=VARCHAR},
+      </if>
+      <if test="backup2 != null">
+        backup2 = #{backup2,jdbcType=VARCHAR},
+      </if>
+      <if test="backup3 != null">
+        backup3 = #{backup3,jdbcType=VARCHAR},
+      </if>
+      <if test="backup4 != null">
+        backup4 = #{backup4,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weichat.boss.data.pojo.Column">
+    update t_column
+    set channelId = #{channelid,jdbcType=INTEGER},
+      moduleId = #{moduleid,jdbcType=INTEGER},
+      customerId = #{customerid,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      showName = #{showname,jdbcType=INTEGER},
+      summary = #{summary,jdbcType=VARCHAR},
+      showSummary = #{showsummary,jdbcType=INTEGER},
+      detail = #{detail,jdbcType=VARCHAR},
+      showDetail = #{showdetail,jdbcType=INTEGER},
+      type = #{type,jdbcType=INTEGER},
+      sequence = #{sequence,jdbcType=INTEGER},
+      logo = #{logo,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      backup1 = #{backup1,jdbcType=VARCHAR},
+      backup2 = #{backup2,jdbcType=VARCHAR},
+      backup3 = #{backup3,jdbcType=VARCHAR},
+      backup4 = #{backup4,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

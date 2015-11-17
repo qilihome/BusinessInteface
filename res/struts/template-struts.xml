@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<!-- 拷贝以下内容到struts.xml -->
+<!-- 
+	<include file="struts/template-struts.xml"></include>
+-->
+<struts>
+	<package name="template" extends="default">
+		<action name="templateAction_*" class="com.weichat.boss.action.template.TemplateAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/template/template_list.jsp</result>
+			<result name="upload">/WEB-INF/jsp/template/template_upload.jsp</result>
+		</action>
+	</package>
+</struts>

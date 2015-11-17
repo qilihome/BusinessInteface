@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.weichat.boss.data.dao.ChannelMapper">
+  <resultMap id="BaseResultMap" type="com.weichat.boss.data.pojo.Channel">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="customerId" jdbcType="INTEGER" property="customerid" />
+    <result column="accessCmd" jdbcType="VARCHAR" property="accesscmd" />
+    <result column="accessUrl" jdbcType="VARCHAR" property="accessurl" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="createtime" jdbcType="VARCHAR" property="createtime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="backup1" jdbcType="VARCHAR" property="backup1" />
+    <result column="backup2" jdbcType="VARCHAR" property="backup2" />
+    <result column="backup3" jdbcType="VARCHAR" property="backup3" />
+    <result column="backup4" jdbcType="VARCHAR" property="backup4" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, name, customerId, accessCmd, accessUrl, type, createtime, status, backup1, backup2, 
+    backup3, backup4
+  </sql>
+  <select id="selectByExample" parameterType="com.weichat.boss.data.pojo.ChannelExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_channel
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_channel
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_channel
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weichat.boss.data.pojo.ChannelExample">
+    delete from t_channel
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weichat.boss.data.pojo.Channel">
+    insert into t_channel (id, name, customerId, 
+      accessCmd, accessUrl, type, 
+      createtime, status, backup1, 
+      backup2, backup3, backup4
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{customerid,jdbcType=INTEGER}, 
+      #{accesscmd,jdbcType=VARCHAR}, #{accessurl,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{backup1,jdbcType=VARCHAR}, 
+      #{backup2,jdbcType=VARCHAR}, #{backup3,jdbcType=VARCHAR}, #{backup4,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.weichat.boss.data.pojo.Channel">
+    insert into t_channel
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="customerid != null">
+        customerId,
+      </if>
+      <if test="accesscmd != null">
+        accessCmd,
+      </if>
+      <if test="accessurl != null">
+        accessUrl,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="backup1 != null">
+        backup1,
+      </if>
+      <if test="backup2 != null">
+        backup2,
+      </if>
+      <if test="backup3 != null">
+        backup3,
+      </if>
+      <if test="backup4 != null">
+        backup4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="customerid != null">
+        #{customerid,jdbcType=INTEGER},
+      </if>
+      <if test="accesscmd != null">
+        #{accesscmd,jdbcType=VARCHAR},
+      </if>
+      <if test="accessurl != null">
+        #{accessurl,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="backup1 != null">
+        #{backup1,jdbcType=VARCHAR},
+      </if>
+      <if test="backup2 != null">
+        #{backup2,jdbcType=VARCHAR},
+      </if>
+      <if test="backup3 != null">
+        #{backup3,jdbcType=VARCHAR},
+      </if>
+      <if test="backup4 != null">
+        #{backup4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weichat.boss.data.pojo.ChannelExample" resultType="java.lang.Integer">
+    select count(*) from t_channel
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_channel
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customerid != null">
+        customerId = #{record.customerid,jdbcType=INTEGER},
+      </if>
+      <if test="record.accesscmd != null">
+        accessCmd = #{record.accesscmd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accessurl != null">
+        accessUrl = #{record.accessurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null">
+        type = #{record.type,jdbcType=INTEGER},
+      </if>
+      <if test="record.createtime != null">
+        createtime = #{record.createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.backup1 != null">
+        backup1 = #{record.backup1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.backup2 != null">
+        backup2 = #{record.backup2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.backup3 != null">
+        backup3 = #{record.backup3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.backup4 != null">
+        backup4 = #{record.backup4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_channel
+    set id = #{record.id,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      customerId = #{record.customerid,jdbcType=INTEGER},
+      accessCmd = #{record.accesscmd,jdbcType=VARCHAR},
+      accessUrl = #{record.accessurl,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=INTEGER},
+      createtime = #{record.createtime,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      backup1 = #{record.backup1,jdbcType=VARCHAR},
+      backup2 = #{record.backup2,jdbcType=VARCHAR},
+      backup3 = #{record.backup3,jdbcType=VARCHAR},
+      backup4 = #{record.backup4,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weichat.boss.data.pojo.Channel">
+    update t_channel
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="customerid != null">
+        customerId = #{customerid,jdbcType=INTEGER},
+      </if>
+      <if test="accesscmd != null">
+        accessCmd = #{accesscmd,jdbcType=VARCHAR},
+      </if>
+      <if test="accessurl != null">
+        accessUrl = #{accessurl,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="backup1 != null">
+        backup1 = #{backup1,jdbcType=VARCHAR},
+      </if>
+      <if test="backup2 != null">
+        backup2 = #{backup2,jdbcType=VARCHAR},
+      </if>
+      <if test="backup3 != null">
+        backup3 = #{backup3,jdbcType=VARCHAR},
+      </if>
+      <if test="backup4 != null">
+        backup4 = #{backup4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weichat.boss.data.pojo.Channel">
+    update t_channel
+    set name = #{name,jdbcType=VARCHAR},
+      customerId = #{customerid,jdbcType=INTEGER},
+      accessCmd = #{accesscmd,jdbcType=VARCHAR},
+      accessUrl = #{accessurl,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      backup1 = #{backup1,jdbcType=VARCHAR},
+      backup2 = #{backup2,jdbcType=VARCHAR},
+      backup3 = #{backup3,jdbcType=VARCHAR},
+      backup4 = #{backup4,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

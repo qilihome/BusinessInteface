@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<!-- 拷贝以下内容到struts.xml -->
+<!-- 
+	<include file="struts/fileupload-struts.xml"></include>
+-->
+<struts>
+	<package name="fileupload" extends="default">
+		<action name="fileUploadAction_*" class="com.weichat.boss.action.upload.FileUploadAction" method="{1}"></action>
+	</package>
+</struts>

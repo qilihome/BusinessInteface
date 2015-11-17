@@ -1,0 +1,325 @@
+@charset"utf-8";
+/***
+ * Author:Yellow
+ * Date:2013-05-25
+ * Description: 移动终端横屏模式样式
+ *              
+ *                   
+ * 					      
+ *  			
+ *  
+***/
+
+/******************** Read Book ********************/
+.read-page p {
+	color:#b5b5b5;
+	font-size:14px;
+}
+
+.chapter-list-top-wr {
+	overflow:hidden;
+	position: fixed;
+	right:0;
+	bottom:174px;
+	z-index:100000;
+
+	-webkit-box-orient:horizontal;
+	-moz-box-orient:horizontal;
+	-o-box-orient:horizontal;
+	-ms-box-orient:horizontal;
+	box-orient:horizontal;
+	
+	display:-webkit-box; 
+	display:-moz-box; 
+	display:box;
+
+	-webkit-border-top-left-radius:10px;
+	border-top-left-radius:10px;
+	border-top:1px solid #fff;
+	border-left:1px solid #fff;
+
+	max-width:520px;
+	width:520px;
+	height:48px;
+	line-height:48px;
+	background:#dbdfe2;
+	border:1px solid #feffff;
+	border-bottom:none;
+}
+.chapter-list-top-wr a {
+	overflow: hidden;
+	display:block;
+	-webkit-box-flex:1; 
+	-moz-box-flex:1; 
+	box-flex:1;
+	text-align: center;
+}
+.chapter-list-top-wr .chapter-close {
+	width:24px;
+	height:24px;
+	margin-top:12px;
+	margin-left:0;
+	text-indent: -999em;
+	background: url(../images/chapter-close.png) no-repeat center center;
+	background-size: 20px;
+}
+.chapter-list-top-wr .chapter-sequence {
+	height:32px;
+	line-height:34px;
+	margin-top:6px;
+	margin-right:6px;
+	text-shadow: 0 1px 1px rgba(255,255,255);
+	color:#595959;
+	font-size:14px;
+	border:1px solid #bfc0c3;
+	background:-moz-linear-gradient(top,#e2e2e2,#dadbdc);/*Mozilla*/
+	background:-webkit-linear-gradient(top,#e2e2e2,#dadbdc);/*new gradient for Webkit*/
+	background:-o-linear-gradient(top,#e2e2e2,#dadbdc); /*Opera11*/
+}
+
+.chapter-list-top-wr p {
+	overflow: hidden;
+	-webkit-box-flex:8; 
+	-moz-box-flex:8; 
+	box-flex:8;
+	text-align: center;
+	font-size:18px;
+	font-family: "黑体";
+	color:#272727;
+}
+.chapter-list-top-wr p span {
+	color:#808080;
+	line-height:40px;
+	margin-left:8px;
+	font-size:14px;
+	font-family: verdana;
+}
+
+.chapter-list-wr {
+	overflow:hidden;
+	position: fixed;
+	right:0;
+	bottom:0;
+	z-index:100000;
+	background:#fff;
+
+	-webkit-border-bottom-left-radius:10px;
+	border-bottom-left-radius:10px;
+	border:1px solid #feffff;
+	border-top:none;
+}
+
+.chapter-list {
+	overflow:hidden;
+	width:520px;
+	max-width:520px;
+	height:173px;
+	-webkit-border-bottom-left-radius:10px;
+	border-bottom-left-radius:10px;
+}
+.chapter-list li {
+	overflow:hidden;
+	float:left;
+	width:234px;
+	height:45px;
+	line-height:45px;
+	padding:0 13px;
+	background-color: #e9e9e9;
+}
+.chapter-list li a {
+	display:block;
+	color:#595959;
+	font-size:16px;
+}
+.graybg {
+	background-color: #dbdfe2!important;
+}
+.chapter-list li a span {
+	margin-right:5px;
+	font-family: Arial;
+	color: #b4b4b4;
+}
+
+.chapter-list .current {
+	border-left:6px solid #3e65de;
+	padding:0 13px 0 7px!important;
+}
+.chapter-list .current a,.chapter-list .current span {
+	color:#3e65de;
+}	
+/***** Last Page *****/
+.read-last-page {
+	overflow:hidden;
+	position: fixed;
+	right:0;
+	bottom:0;
+	z-index:1000000;
+
+	-webkit-box-orient: vertical;
+	-moz-box-orient:vertical;
+	-o-box-orient:vertical;
+	-ms-box-orient:vertical;
+	box-orient:vertical;
+
+	display:-webkit-box; 
+	display:-moz-box; 
+	display:box;
+
+	-webkit-border-top-left-radius: 10px;
+	-webkit-border-bottom-left-radius: 10px;
+	border-top-left-radius:10px;
+	border-bottom-left-radius:10px;
+
+	width:520px;
+	max-width:520px;
+	height:222px;
+	padding-left: 10px;
+	border:1px solid #fff;
+	background: #dbdee1;
+}
+.read-last-txt {
+	overflow:hidden;
+	-webkit-box-flex:1; 
+	-moz-box-flex:1; 
+	box-flex:1;
+
+	-webkit-box-orient: horizontal;
+	-moz-box-orient:horizontal;
+	-o-box-orient:horizontal;
+	-ms-box-orient:horizontal;
+	box-orient:horizontal;
+
+	display:-webkit-box; 
+	display:-moz-box; 
+	display:box;
+
+	padding:10px 0 10px 30px;
+	border-bottom:1px solid #b3b3b3;
+} 
+.read-last-txt h4 {
+	-webkit-box-flex:2; 
+	-moz-box-flex:2; 
+	box-flex:2;
+	height:40px;
+	padding-left:50px;
+	font:500 20px/40px "黑体";
+}
+.read-last-txt p {
+	-webkit-box-flex:6; 
+	-moz-box-flex:6; 
+	box-flex:6;
+	overflow:hidden;
+	width:140px;
+	height:50px;
+}
+.read-last-txt .mod-btn-blue {
+	width:120px;
+	height:30px;
+	line-height:30px;
+}
+.read-last-recommend {
+	-webkit-box-flex:8; 
+	-moz-box-flex:8; 
+	box-flex:8;
+
+	-webkit-box-orient: horizontal;
+	-moz-box-orient:horizontal;
+	-o-box-orient:horizontal;
+	-ms-box-orient:horizontal;
+	box-orient:horizontal;
+
+	display:-webkit-box; 
+	display:-moz-box; 
+	display:box;
+
+	border-top:1px solid #fff;
+}
+
+.read-last-recommend-top {
+	-webkit-box-orient: vertical;
+	-moz-box-orient:vertical;
+	-o-box-orient:vertical;
+	-ms-box-orient:vertical;
+	box-orient:vertical;
+
+	display:-webkit-box; 
+	display:-moz-box; 
+	display:box;
+
+	padding:10px 20px 0 0;
+	margin:10px 0;
+	border-right:1px solid #b3b3b3;
+
+}
+.read-last-recommend-top h4 {
+	-webkit-box-flex:1; 
+	-moz-box-flex:1; 
+	box-flex:1;
+	line-height:32px;
+	color:#272727;
+	font-size:18px;
+}
+.read-last-recommend-top p {
+	-webkit-box-flex:5; 
+	-moz-box-flex:5; 
+	box-flex:5;
+	height:40px;
+	text-align:center;
+}
+.read-last-recommend-top .mod-btn-orange {
+	width:70px;
+	height:30px;
+	margin-right:-16px;
+}
+
+.read-recommend-list-wr {
+	-webkit-box-flex:5; 
+	-moz-box-flex:5; 
+	box-flex:5;
+
+	-webkit-box-orient: horizontal;
+	-moz-box-orient:horizontal;
+	-o-box-orient:horizontal;
+	-ms-box-orient:horizontal;
+	box-orient:horizontal;
+
+	display:-webkit-box; 
+	display:-moz-box; 
+	display:box;
+
+	margin:10px 0;
+	padding-left:20px;
+	border-left:1px solid #fff;
+}
+.read-recommend-wr {
+	-webkit-box-flex:2; 
+	-moz-box-flex:2; 
+	box-flex:2;
+	margin-right:20px;
+}
+.read-recommend-intro {
+	display:block;
+	width:160px;
+	height:280px;
+}
+.read-recommend-cover {
+	width:80px;
+	height:105px;
+	border:3px solid #fff;
+	box-radius:10px;
+}
+.read-recommend-title {
+	overflow:hidden;
+	width:86px;
+	height:20px;
+	margin:5px 0 0;
+	line-height:140%;
+	font-size:14px;
+	color:#272727;
+}
+.read-recommend-author {
+	overflow:hidden;
+	width:90px;
+	font-size:12px;
+	color:#808080;
+}

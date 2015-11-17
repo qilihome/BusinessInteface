@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<!-- 拷贝以下内容到struts.xml -->
+<!-- 
+	<include file="struts/album-struts.xml"></include>
+-->
+<struts>
+	<package name="album" extends="default">
+		<action name="albumAction_*" class="com.weichat.boss.action.album.AlbumAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/album/album_list.jsp</result>
+			<result name="add">/WEB-INF/jsp/album/album_add.jsp</result>
+			<result name="edit">/WEB-INF/jsp/album/album_edit.jsp</result>
+			<result name="view">/WEB-INF/jsp/album/album_view.jsp</result>
+		</action>
+	</package>
+</struts>
