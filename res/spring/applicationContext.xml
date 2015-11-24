@@ -67,4 +67,5 @@
 	<import resource="vote-context.xml" />
 	<import resource="voteoption-context.xml" />
 	<import resource="voterecord-context.xml" />
+	<import resource="admin-context.xml" />
 </beans>

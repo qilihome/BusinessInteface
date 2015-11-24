@@ -28,6 +28,7 @@
 	<include file="struts/expertreview-struts.xml"></include>
 	<include file="struts/vote-struts.xml"></include>
 	<include file="struts/voteoption-struts.xml"></include>
+	<include file="struts/admin-struts.xml"></include>
 	<!-- 
 	<include file="struts/channel-struts.xml"></include>
 	<include file="struts/module-struts.xml"></include>

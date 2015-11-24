@@ -7,6 +7,7 @@
 		<typeAlias alias="CustomerTemplateContent" type="com.weichat.boss.data.pojo.CustomerTemplateContent" />
 		<typeAlias alias="CustomerAlbum" type="com.weichat.boss.data.pojo.CustomerAlbum" />
 		<typeAlias alias="CustomerAlbumPhoto" type="com.weichat.boss.data.pojo.CustomerAlbumPhoto" />
+		<typeAlias alias="Admin" type="com.weichat.boss.data.pojo.Admin" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/TemplateMapper.xml" />
@@ -19,5 +20,6 @@
 		<mapper resource="mybatis/VoteMapper.xml" />
 		<mapper resource="mybatis/VoteOptionMapper.xml" />
 		<mapper resource="mybatis/VoteRecordMapper.xml" />
+		<mapper resource="mybatis/AdminMapper.xml" />
 	</mappers>
 </configuration>
