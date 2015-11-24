@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.weichat.boss.data.dao.AdminMapper">
+	
+	<select id="query" parameterType="com.weichat.boss.data.pojo.Admin"
+		resultType="com.weichat.boss.data.pojo.Admin">
+		select id,count,deptId,name,password from tb_sys_admin where count=#{count,jdbcType=VARCHAR} and password = #{password,jdbcType=VARCHAR} and accountState = 10
+	</select>
+</mapper>
