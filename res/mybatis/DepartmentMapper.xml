@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.weichat.boss.data.dao.DepartmentMapper">
+	<resultMap id="BaseResultMap" type="com.weichat.boss.data.pojo.Department">
+    <id column="DepartID" jdbcType="INTEGER" property="departID" />
+    <result column="Depart_Name" jdbcType="VARCHAR" property="departName" />
+    <result column="CreateID" jdbcType="INTEGER" property="createID" />
+    <result column="Create_Time" jdbcType="DATE" property="createTime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="DepartNO" jdbcType="INTEGER" property="departNO" />
+  </resultMap>
+	<select id="list" parameterType="com.weichat.boss.data.pojo.Department" resultMap="BaseResultMap"
+		resultType="com.weichat.boss.data.pojo.Department">
+		select * from tb_sys_department order by DepartNo
+	</select>
+</mapper>

@@ -1,5 +1,7 @@
 package com.weichat.boss.service.admin;
 
+import java.util.List;
+
 import com.weichat.boss.data.pojo.Admin;
 
 /**
@@ -11,4 +13,6 @@ import com.weichat.boss.data.pojo.Admin;
 public interface AdminService
 {
 	Admin login(Admin admin);
+	
+	List<Admin> queryByDepart(int deptId);
 }

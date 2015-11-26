@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.weichat.boss.data.dao.WorkFlowMapper">
+
+	<insert id="insert" parameterType="com.weichat.boss.data.pojo.WorkFlow">
+		<selectKey resultType="int" keyProperty="workFlowId" order="AFTER">
+			select @@IDENTITY AS workFlowId
+		</selectKey>
+		insert into tb_fun_workflow (BusinessID, PWorkFlowID, PWorkFlowIDS,
+		Create_Time, OperatorID, DepartID,
+		Deal_Content, Deal_Time, Over_Time,
+		status, Over_Content
+		)
+		values (#{businessId,jdbcType=INTEGER},
+		#{pWorkFlowId,jdbcType=INTEGER},
+		#{pWorkFlowIds,jdbcType=VARCHAR},
+		#{createTime,jdbcType=DATE}, #{operatorId,jdbcType=INTEGER},
+		#{departId,jdbcType=INTEGER},
+		#{dealContent,jdbcType=VARCHAR},
+		#{dealTime,jdbcType=DATE},
+		#{overTime,jdbcType=DATE},
+		#{status,jdbcType=INTEGER},#{overContext,jdbcType=VARCHAR}
+		)
+	</insert>
+	<update id="update" parameterType="com.weichat.boss.data.pojo.WorkFlow">
+		update tb_fun_workflow
+		set
+		BusinessID = #{businessId,jdbcType=INTEGER},
+		PWorkFlowID =
+		#{pWorkFlowId,jdbcType=INTEGER},
+		PWorkFlowIDS =
+		#{pWorkFlowIds,jdbcType=VARCHAR},
+		Create_Time =
+		#{createTime,jdbcType=DATE},
+		operatorId =
+		#{operatorId,jdbcType=INTEGER},
+		DepartID =
+		#{departId,jdbcType=INTEGER},
+		Deal_Content =
+		#{dealContent,jdbcType=VARCHAR},
+		Deal_Time = #{dealTime,jdbcType=DATE},
+		Over_Time = #{overTime,jdbcType=DATE},
+		status =
+		#{status,jdbcType=INTEGER}
+		Over_Content=#{overContext,jdbcType=VARCHAR}
+		where WorkFlowID =
+		#{workFlowId,jdbcType=INTEGER}
+	</update>
+</mapper>

@@ -28,4 +28,10 @@ public class AdminServiceImpl implements AdminService
 		return admins.get(0);
 	}
 
+	@Override
+	public List<Admin> queryByDepart(int deptId) {
+		// TODO Auto-generated method stub
+		return adminMapper.queryByDepart(deptId);
+	}
+
 }

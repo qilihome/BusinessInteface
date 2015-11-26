@@ -6,4 +6,10 @@
 		resultType="com.weichat.boss.data.pojo.Admin">
 		select id,count,deptId,name,password from tb_sys_admin where count=#{count,jdbcType=VARCHAR} and password = #{password,jdbcType=VARCHAR} and accountState = 10
 	</select>
+	
+	<select id="queryByDepart" parameterType="java.lang.Integer"
+		resultType="com.weichat.boss.data.pojo.Admin">
+		select id,count,deptId,name,password from tb_sys_admin where deptId=#{count,jdbcType=INTEGER} and accountState = 10
+	</select>
+	
 </mapper>

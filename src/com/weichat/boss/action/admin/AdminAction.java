@@ -1,7 +1,9 @@
 package com.weichat.boss.action.admin;
 
 import java.io.IOException;
+import java.util.List;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import org.apache.log4j.Logger;
@@ -25,6 +27,8 @@ public class AdminAction extends BaseAction
 	
 	private String password;
 	
+	private int deptId;
+	
 	public String login() throws IOException{
 		Admin admin = new Admin();
 		admin.setCount(userName);
@@ -32,6 +36,16 @@ public class AdminAction extends BaseAction
 		admin = adminService.login(admin);
 		String result = JSONObject.fromObject(admin).toString();
 		System.out.print("result============"+result);
+		this.getResponse().getWriter().write(result);
+		return null;
+	}
+	
+	
+	public String queryByDepart() throws IOException{
+		List<Admin> list = adminService.queryByDepart(deptId);
+		String result = JSONArray.fromObject(list).toString();
+		System.out.print("result============"+result);
+		response.setContentType("text/xml;charset=utf-8");
 		this.getResponse().getWriter().write(result);
 		return null;
 	}
@@ -54,6 +68,16 @@ public class AdminAction extends BaseAction
 	public void setPassword(String password)
 	{
 		this.password = password;
+	}
+
+
+	public int getDeptId() {
+		return deptId;
+	}
+
+
+	public void setDeptId(int deptId) {
+		this.deptId = deptId;
 	}
 	
 	

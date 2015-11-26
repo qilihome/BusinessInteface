@@ -32,6 +32,9 @@
 	<include file="struts/admin-struts.xml"></include>
 	<include file="struts/businesstype-struts.xml"></include>
 	<include file="struts/businessinfo-struts.xml"></include>
+	<include file="struts/department-struts.xml"></include>
+	<include file="struts/workflow-struts.xml"></include>
+	
 	<!-- 
 	<include file="struts/channel-struts.xml"></include>
 	<include file="struts/module-struts.xml"></include>
