@@ -30,11 +30,13 @@ public class BusinessInfo
 	private Date createTime;
 	/*结束或注销时间*/
 	private Date overTime;
+	
+	private int departID;
 	/**
 	 * 状态标志
 	 * 0：新建；1：流转；2：注销(逻辑删除)；3：结束
 	 * */
-	private int Status;
+	private int Status = 0;
 	/*业务类别ID*/
 	private int businessTypeID;
 	/*业务编号*/
@@ -135,4 +137,11 @@ public class BusinessInfo
 	{
 		this.businessNo = businessNo;
 	}
+	public int getDepartID() {
+		return departID;
+	}
+	public void setDepartID(int departID) {
+		this.departID = departID;
+	}
+	
 }

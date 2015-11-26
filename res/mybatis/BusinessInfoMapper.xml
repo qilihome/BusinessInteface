@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.weichat.boss.data.dao.BusinessInfoMapper">
+	<!-- <select id="query" resultType="com.weichat.boss.data.pojo.BusinessInfo"> 
+		select * from tb_fun_businessinfo </select> -->
+	<resultMap id="BaseResultMap" type="com.weichat.boss.data.pojo.BusinessInfo">
+		<id column="BusinessID" jdbcType="INTEGER" property="businessID" />
+		<result column="Meter_Code" jdbcType="INTEGER" property="customerid" />
+		<result column="Customer_Name" jdbcType="VARCHAR" property="customerName" />
+		<result column="Address" jdbcType="VARCHAR" property="address" />
+		<result column="Telephone" jdbcType="VARCHAR" property="telephone" />
+		<result column="Business_Content" jdbcType="VARCHAR" property="businessContent" />
+		<result column="OperatorID" jdbcType="INTEGER" property="operatorID" />
+		<result column="DepartID" jdbcType="INTEGER" property="departID" />
+		<result column="Create_Time" jdbcType="VARCHAR" property="createTime" />
+		<result column="Over_Time" jdbcType="VARCHAR" property="overTime" />
+		<result column="Status" jdbcType="INTEGER" property="Status" />
+		<result column="BusinessTypeID" jdbcType="INTEGER" property="businessTypeID" />
+		<result column="BusinessNo" jdbcType="VARCHAR" property="businessNo" />
+	</resultMap>
+
+	<insert id="save" parameterType="com.weichat.boss.data.pojo.BusinessInfo">
+	<selectKey resultType="int" keyProperty="businessID" order="AFTER" >
+      select @@IDENTITY AS businessID
+    </selectKey>
+		insert into tb_fun_businessinfo (Meter_Code, Customer_Name,
+		Address,
+		Telephone, Business_Content,
+		OperatorID, Create_Time, Over_Time,
+		DepartID, Status, BusinessTypeID,BusinessNo
+		)
+		values
+		(#{meterCode,jdbcType=VARCHAR},
+		#{customerName,jdbcType=VARCHAR},
+		#{address,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR},
+		#{businessContent,jdbcType=VARCHAR},
+		#{operatorID,jdbcType=INTEGER},
+		#{createTime,jdbcType=DATE},
+		#{overTime,jdbcType=DATE},
+		#{departID,jdbcType=INTEGER}, #{Status,jdbcType=INTEGER},
+		#{businessTypeID,jdbcType=INTEGER},
+		#{businessNo,jdbcType=VARCHAR}
+		)
+
+		
+	</insert>
+</mapper>

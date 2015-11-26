@@ -20,6 +20,11 @@
 		<mapper resource="mybatis/VoteMapper.xml" />
 		<mapper resource="mybatis/VoteOptionMapper.xml" />
 		<mapper resource="mybatis/VoteRecordMapper.xml" />
+		
+		
+		
 		<mapper resource="mybatis/AdminMapper.xml" />
+		<mapper resource="mybatis/BusinessTypeMapper.xml" />
+		<mapper resource="mybatis/BusinessInfoMapper.xml" />
 	</mappers>
 </configuration>
