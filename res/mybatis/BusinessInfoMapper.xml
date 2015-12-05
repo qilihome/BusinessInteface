@@ -5,7 +5,7 @@
 		select * from tb_fun_businessinfo </select> -->
 	<resultMap id="BaseResultMap" type="com.weichat.boss.data.pojo.BusinessInfo">
 		<id column="BusinessID" jdbcType="INTEGER" property="businessID" />
-		<result column="Meter_Code" jdbcType="INTEGER" property="customerid" />
+		<result column="Meter_Code" jdbcType="INTEGER" property="meterCode" />
 		<result column="Customer_Name" jdbcType="VARCHAR" property="customerName" />
 		<result column="Address" jdbcType="VARCHAR" property="address" />
 		<result column="Telephone" jdbcType="VARCHAR" property="telephone" />
@@ -14,15 +14,67 @@
 		<result column="DepartID" jdbcType="INTEGER" property="departID" />
 		<result column="Create_Time" jdbcType="VARCHAR" property="createTime" />
 		<result column="Over_Time" jdbcType="VARCHAR" property="overTime" />
-		<result column="Status" jdbcType="INTEGER" property="Status" />
+		<result column="Status" jdbcType="INTEGER" property="status" />
 		<result column="BusinessTypeID" jdbcType="INTEGER" property="businessTypeID" />
 		<result column="BusinessNo" jdbcType="VARCHAR" property="businessNo" />
 	</resultMap>
+	
+	<resultMap id="BaseResultMap2" type="com.weichat.boss.action.business.vo.BusinessInfoVo">
+		<id column="BusinessID" jdbcType="INTEGER" property="businessID" />
+		<result column="Meter_Code" jdbcType="INTEGER" property="meterCode" />
+		<result column="Customer_Name" jdbcType="VARCHAR" property="customerName" />
+		<result column="Address" jdbcType="VARCHAR" property="address" />
+		<result column="Telephone" jdbcType="VARCHAR" property="telephone" />
+		<result column="Business_Content" jdbcType="VARCHAR" property="businessContent" />
+		<result column="OperatorID" jdbcType="INTEGER" property="operatorID" />
+		<result column="DepartID" jdbcType="INTEGER" property="departID" />
+		<result column="Create_Time" jdbcType="VARCHAR" property="createTime" />
+		<result column="Over_Time" jdbcType="VARCHAR" property="overTime" />
+		<result column="Status" jdbcType="INTEGER" property="status" />
+		<result column="BusinessTypeID" jdbcType="INTEGER" property="businessTypeID" />
+		<result column="BusinessNo" jdbcType="VARCHAR" property="businessNo" />
+		<result column="OperatorName" jdbcType="VARCHAR" property="name" />
+		<result column="BusinessTypeName" jdbcType="VARCHAR" property="businessTypeName" />
+	</resultMap>
 
+
+	<select id="queryToBusinesses"
+		parameterType="com.weichat.boss.action.business.vo.BusinessCondition" resultMap="BaseResultMap2">
+		select BusinessID, BusinessNo, BusinessTypeId,
+		BusinessTypeName, Meter_Code, Customer_Name, telephone, Address,
+		Business_Content, OperatorID, [Count], name as OperatorName, deptid,
+		depart_name, Create_time, Over_Time, Status, WorkflowContent from
+		View_Business where 1=1 and BusinessID in (Select BusinessId from
+		tb_fun_workflow where status = 0 and OperatorID = #{operatorID,jdbcType=INTEGER}) Order by
+		BusinessId desc
+	</select>
+	<select id="query"
+		parameterType="com.weichat.boss.action.business.vo.BusinessCondition"
+		resultMap="BaseResultMap2">
+		select BusinessID, BusinessNo, BusinessTypeId,
+		BusinessTypeName, Meter_Code, Customer_Name, telephone, Address,
+		Business_Content, OperatorID, [Count], name as OperatorName, deptid,
+		depart_name, Create_time, Over_Time, Status, WorkflowContent from
+		View_Business where 1=1 and Business_Content like
+		%#{businessContent,jdbcType=VARCHAR}% and BusinessID in (Select
+		BusinessId from
+		tb_fun_workflow where status =
+		#{status,jdbcType=INTEGER} and
+		OperatorID =
+		#{operatorId,jdbcType=INTEGER}) and
+		CONVERT(varchar(10),
+		Create_Time,
+		120) >= #{startTime,jdbcType=INTEGER} and
+		CONVERT(varchar(10),
+		Create_Time, 120) &lt;= #{endTime,jdbcType=INTEGER}
+		Order by
+		BusinessId
+		Desc
+	</select>
 	<insert id="save" parameterType="com.weichat.boss.data.pojo.BusinessInfo">
-	<selectKey resultType="int" keyProperty="businessID" order="AFTER" >
-      select @@IDENTITY AS businessID
-    </selectKey>
+		<selectKey resultType="int" keyProperty="businessID" order="AFTER">
+			select @@IDENTITY AS businessID
+		</selectKey>
 		insert into tb_fun_businessinfo (Meter_Code, Customer_Name,
 		Address,
 		Telephone, Business_Content,
@@ -37,11 +89,29 @@
 		#{operatorID,jdbcType=INTEGER},
 		#{createTime,jdbcType=DATE},
 		#{overTime,jdbcType=DATE},
-		#{departID,jdbcType=INTEGER}, #{Status,jdbcType=INTEGER},
+		#{departID,jdbcType=INTEGER}, #{status,jdbcType=INTEGER},
 		#{businessTypeID,jdbcType=INTEGER},
 		#{businessNo,jdbcType=VARCHAR}
 		)
 
-		
+
 	</insert>
+	
+	<update id="update" parameterType="com.weichat.boss.data.pojo.BusinessInfo">
+		update tb_fun_businessinfo
+	    set Meter_Code = #{meterCode,jdbcType=VARCHAR},
+	      Customer_Name = #{customerName,jdbcType=VARCHAR},
+	      Address = #{address,jdbcType=VARCHAR},
+	      Telephone = #{telephone,jdbcType=VARCHAR},
+	      Business_Content = #{businessContent,jdbcType=VARCHAR},
+	      OperatorID=#{operatorID,jdbcType=INTEGER},
+	      Create_Time = #{createTime,jdbcType=DATE},
+	      Over_Time = #{overTime,jdbcType=DATE},
+	      DepartID = #{departID,jdbcType=INTEGER},
+	      Status = #{status,jdbcType=INTEGER},
+	      BusinessTypeID = #{businessTypeID,jdbcType=INTEGER},
+	      BusinessNo = #{businessNo,jdbcType=VARCHAR},
+	      where businessID = #{businessID,jdbcType=INTEGER}
+	</update>
+
 </mapper>

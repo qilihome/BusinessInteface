@@ -74,5 +74,7 @@
 	<import resource="businessinfo-context.xml" />
 	<import resource="department-context.xml" />
 	<import resource="workflow-context.xml" />
+	<import resource="customer-context.xml" />
+	
 	
 </beans>

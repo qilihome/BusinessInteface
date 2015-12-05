@@ -2,6 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.weichat.boss.data.dao.WorkFlowMapper">
 
+	<resultMap id="BaseResultMap" type="com.weichat.boss.data.pojo.WorkFlow">
+		<id column="WorkFlowID" jdbcType="INTEGER" property="workFlowId" />
+		<result column="BusinessID" jdbcType="INTEGER" property="businessId" />
+		<result column="PWorkFlowID" jdbcType="INTEGER" property="pWorkFlowId" />
+		<result column="PWorkFlowIDS" jdbcType="VARCHAR" property="pWorkFlowIds" />
+		<result column="Create_Time" jdbcType="DATE" property="createTime" />
+		<result column="OperatorID" jdbcType="INTEGER" property="operatorId" />
+		<result column="DepartID" jdbcType="INTEGER" property="departId" />
+		<result column="Deal_Content" jdbcType="VARCHAR" property="dealContent" />
+		<result column="Deal_Time" jdbcType="DATE" property="dealTime" />
+		<result column="Over_Time" jdbcType="DATE" property="overTime" />
+		<result column="Over_Content" jdbcType="VARCHAR" property="type" />
+		<result column="status" jdbcType="INTEGER" property="status" />
+	</resultMap>
+
 	<insert id="insert" parameterType="com.weichat.boss.data.pojo.WorkFlow">
 		<selectKey resultType="int" keyProperty="workFlowId" order="AFTER">
 			select @@IDENTITY AS workFlowId
@@ -46,4 +61,5 @@
 		where WorkFlowID =
 		#{workFlowId,jdbcType=INTEGER}
 	</update>
+
 </mapper>

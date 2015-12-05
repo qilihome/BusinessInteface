@@ -28,6 +28,6 @@
 		<mapper resource="mybatis/BusinessInfoMapper.xml" />
 		<mapper resource="mybatis/DepartmentMapper.xml" />
 		<mapper resource="mybatis/WorkFlowMapper.xml" />
-		
+		<mapper resource="mybatis/CustomerMapper.xml" />
 	</mappers>
 </configuration>

@@ -7,4 +7,5 @@ public interface WorkFlowMapper
 	int save(WorkFlow workFlow);
 	
 	int update(WorkFlow workFlow);
+	
 }

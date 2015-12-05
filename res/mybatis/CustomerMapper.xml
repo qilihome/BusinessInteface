@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.weichat.boss.data.dao.CustomerMapper">
+	<resultMap id="BaseResultMap" type="com.weichat.boss.data.pojo.Customer">
+		<id column="autoNo" jdbcType="VARCHAR" property="autoNo" />
+		<result column="customerNo" jdbcType="VARCHAR" property="customerNo" />
+		<result column="customerName" jdbcType="VARCHAR" property="customerName" />
+		<result column="address" jdbcType="VARCHAR" property="address" />
+		<result column="phone" jdbcType="VARCHAR" property="phone" />
+	</resultMap>
+
+	<select id="query" parameterType="com.weichat.boss.data.pojo.Customer"
+		resultMap="BaseResultMap">
+		Select 自动表号 as autoNo, 立户编号 as customerNo, 户主名 as
+		customerName, 住址 as
+		address, 联系电话 as phone from
+		Water2008.dbo._ViewMeterMain Where 1=1
+		<if test="customerNo != null">
+			and 立户编号  like '%${customerNo}%'
+		</if>
+		<if test="customerName != null">
+			and 户主名 like '%${customerName}%'
+		</if>
+		<if test="address != null">
+			and 住址 like '%${address}%'
+		</if>
+		<if test="phone != null">
+			and 联系电话 like '%${phone}%'
+		</if>
+
+	</select>
+
+</mapper>
