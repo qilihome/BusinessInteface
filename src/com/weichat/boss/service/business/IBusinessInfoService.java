@@ -10,7 +10,9 @@ public interface IBusinessInfoService {
 	int save(BusinessInfo businessInfo);
 	int update(BusinessInfo businessInfo) ;
 
-	List<BusinessInfoVo> query(BusinessCondition businessCondition);
+	List<BusinessInfoVo> query(BusinessCondition businessCondition, int pageNo);
 
 	List<BusinessInfoVo> queryToBusinesses(int operatorID);
+	
+	BusinessInfoVo queryById(int businessInfoId);
 }

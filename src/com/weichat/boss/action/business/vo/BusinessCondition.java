@@ -6,7 +6,7 @@ public class BusinessCondition {
 
 	private int operatorId;
 
-	private int status;
+	private int status = -1;
 
 	private int businessId;
 
@@ -15,7 +15,7 @@ public class BusinessCondition {
 	private String startTime;
 
 	private String endTime;
-
+	
 	public int getBusinessType() {
 		return businessType;
 	}

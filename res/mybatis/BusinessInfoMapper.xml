@@ -12,8 +12,8 @@
 		<result column="Business_Content" jdbcType="VARCHAR" property="businessContent" />
 		<result column="OperatorID" jdbcType="INTEGER" property="operatorID" />
 		<result column="DepartID" jdbcType="INTEGER" property="departID" />
-		<result column="Create_Time" jdbcType="VARCHAR" property="createTime" />
-		<result column="Over_Time" jdbcType="VARCHAR" property="overTime" />
+		<result column="Create_Time" jdbcType="DATE" property="createTime" />
+		<result column="Over_Time" jdbcType="DATE" property="overTime" />
 		<result column="Status" jdbcType="INTEGER" property="status" />
 		<result column="BusinessTypeID" jdbcType="INTEGER" property="businessTypeID" />
 		<result column="BusinessNo" jdbcType="VARCHAR" property="businessNo" />
@@ -28,8 +28,8 @@
 		<result column="Business_Content" jdbcType="VARCHAR" property="businessContent" />
 		<result column="OperatorID" jdbcType="INTEGER" property="operatorID" />
 		<result column="DepartID" jdbcType="INTEGER" property="departID" />
-		<result column="Create_Time" jdbcType="VARCHAR" property="createTime" />
-		<result column="Over_Time" jdbcType="VARCHAR" property="overTime" />
+		<result column="Create_Time" jdbcType="DATE" property="createTime" />
+		<result column="Over_Time" jdbcType="DATE" property="overTime" />
 		<result column="Status" jdbcType="INTEGER" property="status" />
 		<result column="BusinessTypeID" jdbcType="INTEGER" property="businessTypeID" />
 		<result column="BusinessNo" jdbcType="VARCHAR" property="businessNo" />
@@ -49,27 +49,45 @@
 		BusinessId desc
 	</select>
 	<select id="query"
-		parameterType="com.weichat.boss.action.business.vo.BusinessCondition"
 		resultMap="BaseResultMap2">
+		select top 10 *
+		from 
+		(
+		select row_number() over(order by BusinessID) as rownumber,BusinessID, BusinessNo, BusinessTypeId,
+		BusinessTypeName, Meter_Code, Customer_Name, telephone, Address,
+		Business_Content, OperatorID, [Count], name as OperatorName, deptid,
+		depart_name, Create_time, Over_Time, Status, WorkflowContent from
+		View_Business where 1=1 
+		<if test="businessCondition.businessContent != null and businessCondition.businessContent != ''">
+		and Business_Content like
+		%#{businessCondition.businessContent,jdbcType=VARCHAR}% 
+		</if>
+		and BusinessID in (Select
+		BusinessId from
+		tb_fun_workflow where 
+		1=1 
+		<if test="businessCondition.status != -1">
+		and status = #{businessCondition.status,jdbcType=INTEGER}
+		</if>
+		<if test="businessCondition.operatorId != 0">
+		and OperatorID = #{businessCondition.operatorId,jdbcType=INTEGER})
+		</if>
+		<if test="businessCondition.startTime != null and businessCondition.startTime != ''">
+		and CONVERT(varchar(10), Create_Time, 120) >= #{businessCondition.startTime,jdbcType=INTEGER}
+		</if>
+		<if test="businessCondition.endTime != null and businessCondition.endTime != ''">
+		and CONVERT(varchar(10), Create_Time, 120) &lt;= #{businessCondition.endTime,jdbcType=INTEGER}
+		</if>
+		)) A where rownumber > 40 
+		Order by BusinessId Desc
+	</select>
+	
+	<select id="queryById" parameterType="java.lang.Integer" resultType="com.weichat.boss.action.business.vo.BusinessInfoVo">
 		select BusinessID, BusinessNo, BusinessTypeId,
 		BusinessTypeName, Meter_Code, Customer_Name, telephone, Address,
 		Business_Content, OperatorID, [Count], name as OperatorName, deptid,
 		depart_name, Create_time, Over_Time, Status, WorkflowContent from
-		View_Business where 1=1 and Business_Content like
-		%#{businessContent,jdbcType=VARCHAR}% and BusinessID in (Select
-		BusinessId from
-		tb_fun_workflow where status =
-		#{status,jdbcType=INTEGER} and
-		OperatorID =
-		#{operatorId,jdbcType=INTEGER}) and
-		CONVERT(varchar(10),
-		Create_Time,
-		120) >= #{startTime,jdbcType=INTEGER} and
-		CONVERT(varchar(10),
-		Create_Time, 120) &lt;= #{endTime,jdbcType=INTEGER}
-		Order by
-		BusinessId
-		Desc
+		View_Business where BusinessID = #{businessID,jdbcType=INTEGER}
 	</select>
 	<insert id="save" parameterType="com.weichat.boss.data.pojo.BusinessInfo">
 		<selectKey resultType="int" keyProperty="businessID" order="AFTER">

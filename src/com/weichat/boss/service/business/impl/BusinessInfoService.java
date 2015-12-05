@@ -30,15 +30,21 @@ public class BusinessInfoService implements IBusinessInfoService {
 	}
 
 	@Override
-	public List<BusinessInfoVo> query(BusinessCondition businessCondition) {
+	public List<BusinessInfoVo> query(BusinessCondition businessCondition, int pageNo) {
 		// TODO Auto-generated method stub
-		return businessInfoMapper.query(businessCondition);
+		return businessInfoMapper.query(businessCondition, pageNo);
 	}
 
 	@Override
 	public List<BusinessInfoVo> queryToBusinesses(int operatorID) {
 		// TODO Auto-generated method stub
 		return businessInfoMapper.queryToBusinesses(operatorID);
+	}
+
+	@Override
+	public BusinessInfoVo queryById(int businessInfoId) {
+		// TODO Auto-generated method stub
+		return businessInfoMapper.queryById(businessInfoId);
 	}
 
 }

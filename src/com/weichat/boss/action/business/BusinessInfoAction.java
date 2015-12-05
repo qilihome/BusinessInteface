@@ -50,7 +50,8 @@ public class BusinessInfoAction extends BaseAction
 	public void query() throws IOException{
 		String businessConditionJsonStr = request.getParameter("businessCondition");
 		BusinessCondition businessCondition = (BusinessCondition)JSONObject.toBean(JSONObject.fromObject(businessConditionJsonStr), BusinessCondition.class);
-		List<BusinessInfoVo> list = businessInfoService.query(businessCondition);
+		String pageNo = request.getParameter("pageNo");
+		List<BusinessInfoVo> list = businessInfoService.query(businessCondition, Integer.valueOf(pageNo));
 		String result = JSONArray.fromObject(list).toString();
 		System.out.print("BusinessInfoAction.query-->BusinessInfos============="+result);
 		response.setContentType("text/xml;charset=utf-8");
@@ -65,6 +66,16 @@ public class BusinessInfoAction extends BaseAction
 		System.out.print("BusinessInfoAction.queryToBusinesses-->BusinessInfos============"+result);
 		response.setContentType("text/xml;charset=utf-8");
 		this.getResponse().getWriter().write(result);
+	}
+	
+	public void queryById() throws IOException{
+		String businessInfoId = request.getParameter("businessInfoId");
+		BusinessInfoVo businessInfoVo = businessInfoService.queryById(Integer.valueOf(businessInfoId));
+		String result = JSONObject.fromObject(businessInfoVo).toString();
+		System.out.print("BusinessInfoAction.query-->BusinessInfos============="+result);
+		response.setContentType("text/xml;charset=utf-8");
+		this.getResponse().getWriter().write(result);
+		
 	}
 	
 }
