@@ -12,7 +12,7 @@ public interface BusinessInfoMapper {
 	int save(BusinessInfo businessInfo);
 	int update(BusinessInfo businessInfo);
 	
-	List<BusinessInfoVo> query(@Param("businessCondition") BusinessCondition businessCondition, @Param("page") int page);
+	List<BusinessInfoVo> query(@Param("businessCondition") BusinessCondition businessCondition, @Param("pageNo") int page);
 	
 	List<BusinessInfoVo> queryToBusinesses(int operatorID);
 	

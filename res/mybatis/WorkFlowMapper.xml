@@ -13,9 +13,34 @@
 		<result column="Deal_Content" jdbcType="VARCHAR" property="dealContent" />
 		<result column="Deal_Time" jdbcType="DATE" property="dealTime" />
 		<result column="Over_Time" jdbcType="DATE" property="overTime" />
-		<result column="Over_Content" jdbcType="VARCHAR" property="type" />
+		<result column="Over_Content" jdbcType="VARCHAR" property="overContext" />
 		<result column="status" jdbcType="INTEGER" property="status" />
 	</resultMap>
+	
+	<resultMap id="BaseResultMap2" type="com.weichat.boss.action.workflow.vo.WorkFlowVo">
+		<id column="WorkFlowID" jdbcType="INTEGER" property="workFlowId" />
+		<result column="BusinessID" jdbcType="INTEGER" property="businessId" />
+		<result column="PWorkFlowID" jdbcType="INTEGER" property="pWorkFlowId" />
+		<result column="PWorkFlowIDS" jdbcType="VARCHAR" property="pWorkFlowIds" />
+		<result column="Create_Time" jdbcType="DATE" property="createTime" />
+		<result column="OperatorID" jdbcType="INTEGER" property="operatorId" />
+		<result column="DepartID" jdbcType="INTEGER" property="departId" />
+		<result column="Deal_Content" jdbcType="VARCHAR" property="dealContent" />
+		<result column="Deal_Time" jdbcType="DATE" property="dealTime" />
+		<result column="Over_Time" jdbcType="DATE" property="overTime" />
+		<result column="Over_Content" jdbcType="VARCHAR" property="overContext" />
+		<result column="status" jdbcType="INTEGER" property="status" />
+		<result column="Depart_Name" jdbcType="INTEGER" property="departName" />
+		<result column="name" jdbcType="INTEGER" property="name" />
+	</resultMap>
+
+	<select id="queryByBusinessInfoId" parameterType="java.lang.Integer" resultMap="BaseResultMap2">
+		select ad.name, dt.Depart_Name, wf.* from (select * from
+		tb_fun_workflow where BusinessID = #{businessId,jdbcType=INTEGER} ) wf
+		inner join tb_fun_businessinfo bi on bi.BusinessID = wf.BusinessID
+		inner join tb_sys_admin ad on ad.id= wf.OperatorID
+		inner join tb_sys_department dt on dt.DepartID = wf.DepartID
+	</select>
 
 	<insert id="insert" parameterType="com.weichat.boss.data.pojo.WorkFlow">
 		<selectKey resultType="int" keyProperty="workFlowId" order="AFTER">

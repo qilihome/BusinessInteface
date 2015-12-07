@@ -5,5 +5,5 @@ import java.util.List;
 import com.weichat.boss.data.pojo.Customer;
 
 public interface ICustomerService {
-	List<Customer> query(Customer customer);
+	List<Customer> query(Customer customer, int pageNo);
 }

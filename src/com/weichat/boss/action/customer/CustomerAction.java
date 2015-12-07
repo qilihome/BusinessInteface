@@ -25,7 +25,8 @@ public class CustomerAction extends BaseAction
 	public String query() throws IOException{
 		String customerStr = request.getParameter("customerStr");
 		Customer customer = (Customer)JSONObject.toBean(JSONObject.fromObject(customerStr), Customer.class);
-		List<Customer> list = customerService.query(customer);
+		String pageNo = request.getParameter("pageNo");
+		List<Customer> list = customerService.query(customer,  Integer.valueOf(pageNo));
 		String result = JSONArray.fromObject(list).toString();
 		System.out.print("result============"+result);
 		response.setContentType("text/xml;charset=utf-8");

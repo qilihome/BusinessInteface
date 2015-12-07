@@ -9,25 +9,25 @@
 		<result column="phone" jdbcType="VARCHAR" property="phone" />
 	</resultMap>
 
-	<select id="query" parameterType="com.weichat.boss.data.pojo.Customer"
-		resultMap="BaseResultMap">
-		Select 自动表号 as autoNo, 立户编号 as customerNo, 户主名 as
-		customerName, 住址 as
-		address, 联系电话 as phone from
-		Water2008.dbo._ViewMeterMain Where 1=1
-		<if test="customerNo != null">
-			and 立户编号  like '%${customerNo}%'
+	<select id="query" resultMap="BaseResultMap">
+		 Select top 10 * from (select row_number() over(order by 自动表号) as
+		rownumber, 自动表号 as autoNo, 立户编号 as customerNo, 户主名 as customerName, 住址
+		as address, 联系电话 as phone from Water2008.dbo._ViewMeterMain) v Where
+		1=1
+		<if test="customer.customerNo != null">
+			and customerNo like &apos;%${customer.customerNo}%&apos;
 		</if>
-		<if test="customerName != null">
-			and 户主名 like '%${customerName}%'
+		<if test="customer.customerName != null">
+			and customerName  like &apos;%${customer.customerName}%&apos;
 		</if>
-		<if test="address != null">
-			and 住址 like '%${address}%'
+		<if test="customer.address != null">
+			and address like &apos;%${customer.address}%&apos;
 		</if>
-		<if test="phone != null">
-			and 联系电话 like '%${phone}%'
+		<if test="customer.phone != null">
+			and phone  like &apos;%${customer.phone}%&apos;
 		</if>
-
+		and rownumber > (10*#{pageNo})
+		
 	</select>
 
 </mapper>

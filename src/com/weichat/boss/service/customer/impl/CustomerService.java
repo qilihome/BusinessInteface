@@ -18,9 +18,9 @@ public class CustomerService implements ICustomerService {
 	private CustomerMapper customerMapper;
 
 	@Override
-	public List<Customer> query(Customer customer) {
+	public List<Customer> query(Customer customer, int pageNo) {
 		// TODO Auto-generated method stub
-		return customerMapper.query(customer);
+		return customerMapper.query(customer,pageNo);
 	}
 
 }

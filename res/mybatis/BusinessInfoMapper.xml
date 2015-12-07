@@ -59,8 +59,7 @@
 		depart_name, Create_time, Over_Time, Status, WorkflowContent from
 		View_Business where 1=1 
 		<if test="businessCondition.businessContent != null and businessCondition.businessContent != ''">
-		and Business_Content like
-		%#{businessCondition.businessContent,jdbcType=VARCHAR}% 
+		and Business_Content like &apos;%#{businessCondition.businessContent,jdbcType=VARCHAR}%&apos; 
 		</if>
 		and BusinessID in (Select
 		BusinessId from
@@ -73,20 +72,20 @@
 		and OperatorID = #{businessCondition.operatorId,jdbcType=INTEGER})
 		</if>
 		<if test="businessCondition.startTime != null and businessCondition.startTime != ''">
-		and CONVERT(varchar(10), Create_Time, 120) >= #{businessCondition.startTime,jdbcType=INTEGER}
+		and CONVERT(varchar(10), Create_Time, 120) >= #{businessCondition.startTime,jdbcType=DATE}
 		</if>
 		<if test="businessCondition.endTime != null and businessCondition.endTime != ''">
-		and CONVERT(varchar(10), Create_Time, 120) &lt;= #{businessCondition.endTime,jdbcType=INTEGER}
+		and CONVERT(varchar(10), Create_Time, 120) &lt;= #{businessCondition.endTime,jdbcType=DATE}
 		</if>
-		)) A where rownumber > 40 
+		)) A where rownumber > (10*#{pageNo})
 		Order by BusinessId Desc
 	</select>
 	
 	<select id="queryById" parameterType="java.lang.Integer" resultType="com.weichat.boss.action.business.vo.BusinessInfoVo">
-		select BusinessID, BusinessNo, BusinessTypeId,
-		BusinessTypeName, Meter_Code, Customer_Name, telephone, Address,
-		Business_Content, OperatorID, [Count], name as OperatorName, deptid,
-		depart_name, Create_time, Over_Time, Status, WorkflowContent from
+		select BusinessID as businessID, BusinessNo as businessNo, BusinessTypeId as businessTypeID,
+		BusinessTypeName as businessTypeName, Meter_Code as meterCode, Customer_Name as customerName, telephone as telephone, Address as address,
+		Business_Content as businessContent, OperatorID, [Count], name, deptid,
+		depart_name, Create_time as createTime, Over_Time, Status as status, WorkflowContent from
 		View_Business where BusinessID = #{businessID,jdbcType=INTEGER}
 	</select>
 	<insert id="save" parameterType="com.weichat.boss.data.pojo.BusinessInfo">

@@ -1,5 +1,8 @@
 package com.weichat.boss.service.workflow;
 
+import java.util.List;
+
+import com.weichat.boss.action.workflow.vo.WorkFlowVo;
 import com.weichat.boss.data.pojo.WorkFlow;
 
 /**
@@ -11,4 +14,6 @@ import com.weichat.boss.data.pojo.WorkFlow;
 public interface WorkFlowService
 {
 	int saveOrUpdate(WorkFlow workFlow);
+	
+	List<WorkFlowVo> queryByBusinessInfoId(int businessInfoId);
 }
