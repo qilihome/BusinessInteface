@@ -53,4 +53,8 @@ public class MD5andKL {
 		String k = new String(a);
 		return k;
 	}
+	
+	public static void main(String[] args) {
+		System.out.print(MD5("123123loveyaju"));
+	}
 }

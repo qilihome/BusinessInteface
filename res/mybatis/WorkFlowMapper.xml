@@ -42,7 +42,7 @@
 		inner join tb_sys_department dt on dt.DepartID = wf.DepartID
 	</select>
 
-	<insert id="insert" parameterType="com.weichat.boss.data.pojo.WorkFlow">
+	<insert id="save" parameterType="com.weichat.boss.data.pojo.WorkFlow">
 		<selectKey resultType="int" keyProperty="workFlowId" order="AFTER">
 			select @@IDENTITY AS workFlowId
 		</selectKey>
@@ -81,7 +81,7 @@
 		Deal_Time = #{dealTime,jdbcType=DATE},
 		Over_Time = #{overTime,jdbcType=DATE},
 		status =
-		#{status,jdbcType=INTEGER}
+		#{status,jdbcType=INTEGER},
 		Over_Content=#{overContext,jdbcType=VARCHAR}
 		where WorkFlowID =
 		#{workFlowId,jdbcType=INTEGER}

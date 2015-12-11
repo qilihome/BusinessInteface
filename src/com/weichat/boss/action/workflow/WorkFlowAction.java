@@ -43,4 +43,14 @@ public class WorkFlowAction extends BaseAction
 		response.setContentType("text/xml;charset=utf-8");
 		this.getResponse().getWriter().write(result);
 	}
+
+	public String getWorkflowStr() {
+		return workflowStr;
+	}
+
+	public void setWorkflowStr(String workflowStr) {
+		this.workflowStr = workflowStr;
+	}
+	
+	
 }
