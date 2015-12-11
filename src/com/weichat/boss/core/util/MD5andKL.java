@@ -2,6 +2,9 @@ package com.weichat.boss.core.util;
 
 import java.security.MessageDigest;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
+
 public class MD5andKL {
 	// MD5加码。32位
 	public static String MD5(String inStr) {
@@ -32,29 +35,24 @@ public class MD5andKL {
 
 		return hexValue.toString();
 	}
-
-	// 可逆的加密算法
-	public static String KL(String inStr) {
-		// String s = new String(inStr);
-		char[] a = inStr.toCharArray();
-		for (int i = 0; i < a.length; i++) {
-			a[i] = (char) (a[i] ^ 't');
-		}
-		String s = new String(a);
-		return s;
-	}
-
-	// 加密后解密
-	public static String JM(String inStr) {
-		char[] a = inStr.toCharArray();
-		for (int i = 0; i < a.length; i++) {
-			a[i] = (char) (a[i] ^ 't');
-		}
-		String k = new String(a);
-		return k;
+	
+	public static String md5222(String inStr){
+		String privateKey = "loveyajuan";
+        String tempStr =DigestUtils.md5Hex(privateKey).toUpperCase();
+        String tempStr2 =DigestUtils.md5Hex("123123"+tempStr);
+        tempStr2 =DigestUtils.md5Hex(tempStr2+tempStr);
+        return tempStr2;
 	}
 	
+
 	public static void main(String[] args) {
-		System.out.print(MD5("123123loveyaju"));
+		 String privateKey = "loveyajuan";
+         String tempStr =DigestUtils.md5Hex(privateKey).toUpperCase();
+         System.out.println(tempStr);
+         String tempStr2 =DigestUtils.md5Hex("123123"+tempStr);
+         tempStr2 =DigestUtils.md5Hex("05bc854d4b5ffc01509d9d29b08f45a5"+"32873ABD5A2AB1922B850501A29ABE48");
+         System.out.println(tempStr2);
+         
+        System.out.println( md5222("123123"));
 	}
 }

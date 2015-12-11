@@ -32,7 +32,7 @@ public class AdminAction extends BaseAction
 	public String login() throws IOException{
 		Admin admin = new Admin();
 		admin.setCount(userName);
-		admin.setPassword(MD5andKL.MD5(password));
+		admin.setPassword(MD5andKL.md5222(password));
 		admin = adminService.login(admin);
 		String result = JSONObject.fromObject(admin).toString();
 		System.out.print("result============"+result);
